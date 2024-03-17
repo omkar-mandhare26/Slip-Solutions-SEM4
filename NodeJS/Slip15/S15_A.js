@@ -14,7 +14,4 @@ const findOccurrence = (str, word) => {
 }
 
 let result = findOccurrence(string, word);
-// if (result == 0)
-//     console.log(`Given word not found in string`);
-// else
 console.log(`Occurence of ${word}: ${result}`);

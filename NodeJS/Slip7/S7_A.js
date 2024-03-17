@@ -1,5 +1,3 @@
-// Using Node.js create a web page to read two file names from user and append contents of first file into second file.
-
 import http from "http";
 import url from "url";
 import fs from "fs";
