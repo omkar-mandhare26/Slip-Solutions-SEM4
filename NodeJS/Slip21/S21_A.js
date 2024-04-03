@@ -1,15 +1,20 @@
 const EventEmitter = require('events');
-class UptimeEmitter extends EventEmitter { }
-const uptimeEmitter = new UptimeEmitter();
+const uptimeEmitter = new EventEmitter();
 
-uptimeEmitter.on('uptime', (data) => {
-    console.log(`Application uptime: ${data.uptime} seconds`);
+uptimeEmitter.on('uptime', (seconds) => {
+    let min = 0;
+    if (seconds >= 60) {
+        seconds = math.floor(seconds % 60);
+        min = math.floor(seconds / 60);
+    }
+    console.log(`Application uptime: ${min}:${seconds}`);
 });
 
 function emitUptime() {
     setInterval(() => {
-        const uptimeInSeconds = process.uptime();
-        uptimeEmitter.emit('uptime', { uptime: uptimeInSeconds });
-    }, 1000);
+        const seconds = process.uptime();
+        uptimeEmitter.emit('uptime', seconds);
+    }, 5000);
 }
+
 emitUptime();

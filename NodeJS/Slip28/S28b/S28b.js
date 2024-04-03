@@ -7,27 +7,44 @@ const indexFile = "./index.html";
 const changePWFile = "./pwreset.html";
 
 http.createServer((req, res) => {
-    if (req.url == 'favicon.ico') res.end();
-    if (req.url == "/") {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write(fs.readFileSync(indexFile));
-        res.end();
-    }
-    else if (req.url == "/pwreset") {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write(fs.readFileSync(changePWFile));
-        res.end();
-    }
-    else if (req.url == "/result") {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write("Hello");
-        let args = url.parse(req.url, true).query;
-        console.log(args);
-        res.end();
+    const _url = url.parse(req.url).pathname;
+    switch (_url) {
+        case "/favicon.ico":
+            res.end();
+            break;
+
+        case "/":
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.write(fs.readFileSync(indexFile));
+            res.end();
+            break;
+
+        case "/pwreset":
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.write(fs.readFileSync(changePWFile));
+            res.end();
+            break;
+
+        case "/result":
+            res.writeHead(200, { "Content-Type": "text/html" });
+            let args = url.parse(req.url, true).query;
+            console.log(args);
+            changePW(res, args);
+            // res.end();
+            break;
+
+        default:
+            res.end();
+            break;
     }
 }).listen(PORT, () => { console.log(`Server Running on Port ${PORT}`); });
 
-const changePW = (username, newpw) => {
+const changePW = (res, args) => {
+    let username = args.username;
+    let newpw = args.newpw;
+    console.log(username);
+    console.log(newpw);
+
     let conn = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -38,6 +55,12 @@ const changePW = (username, newpw) => {
     conn.connect((err) => {
         if (err) throw err;
         console.log(`Connected To DB Successfully!`);
-        let sql = `SELECT * FROM user;`;
+        let sql = `UPDATE user SET user_pw="${newpw}" WHERE user_ID="${username}";`;
+        conn.query(sql, (err, data) => {
+            if (err) throw err;
+            console.log(`PW Changed Successfully!`);
+            res.write("PW Changed Successfully!");
+            res.end();
+        });
     });
 }

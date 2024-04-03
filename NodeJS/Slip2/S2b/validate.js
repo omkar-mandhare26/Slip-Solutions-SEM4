@@ -7,7 +7,6 @@ function validateDOB(dob) {
     return age < 18;
 }
 
-
 function isDateValid(dateStr) {
     return isNaN(new Date(dateStr));
 }

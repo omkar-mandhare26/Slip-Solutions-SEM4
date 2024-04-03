@@ -3,6 +3,14 @@ const fs = require("fs");
 const PORT = 8000;
 const fileName = "college_info.json";
 
+http.createServer((req, res) => {
+    if (req.url == "/favicon.ico") res.end();
+    if (req.url == "/") {
+        let jsonData = JSON.parse(fs.readFileSync(fileName));
+        displayInfo(res, jsonData);
+    }
+}).listen(PORT, () => { console.log(`Server Running on Port ${PORT}`); });
+
 const displayInfo = (res, data) => {
     let contentData = `<!DOCTYPE html>
     <html lang="en">
@@ -34,11 +42,3 @@ const displayInfo = (res, data) => {
     res.write(contentData);
     res.end();
 }
-
-http.createServer((req, res) => {
-    if (req.url == "/favicon.ico") res.end();
-    if (req.url == "/") {
-        let jsonData = JSON.parse(fs.readFileSync(fileName));
-        displayInfo(res, jsonData);
-    }
-}).listen(PORT, () => { console.log(`Server Running on Port ${PORT}`); });

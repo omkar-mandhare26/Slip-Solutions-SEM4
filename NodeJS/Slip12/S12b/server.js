@@ -5,6 +5,25 @@ const PORT = 8000;
 const indexFile = "./index.html";
 const loginFile = "./login.html";
 
+http.createServer((req, res) => {
+    if (req.url == '/favicon.ico') res.end();
+    if (req.url == '/') {
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.write(fs.readFileSync(indexFile));
+        res.end();
+    }
+    if (req.url == '/login') {
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.write(fs.readFileSync(loginFile));
+
+        getArguements(req, (args) => {
+            getData(res, args);
+        });
+    }
+}).listen(PORT, () => {
+    console.log(`Server Running on Port ${PORT}`);
+});
+
 const getData = (res, args) => {
     let conn = mysql.createConnection({
         host: "localhost",
@@ -46,22 +65,3 @@ const getArguements = (req, callback) => {
         });
     }
 }
-
-http.createServer((req, res) => {
-    if (req.url == '/favicon.ico') res.end();
-    if (req.url == '/') {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write(fs.readFileSync(indexFile));
-        res.end();
-    }
-    if (req.url == '/login') {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write(fs.readFileSync(loginFile));
-
-        getArguements(req, (args) => {
-            getData(res, args);
-        });
-    }
-}).listen(PORT, () => {
-    console.log(`Server Running on Port ${PORT}`);
-});
