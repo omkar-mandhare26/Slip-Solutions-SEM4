@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fff8dc;
+    font-family: "Times New Roman";
+}
+
+.parent {
+    margin-top: 75px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.details {
+    margin-left: 75px;
+}
+
+.candidateName {
+    letter-spacing: 0.5mm;
+}
+
+.stmpdLink {
+    color: #000;
+}
+
+.nestedQualif {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.nestedQualif li {
+    margin-top: 10px;
+}
+
+.pfp {
+    text-align: right;
+}
+
+.pfp img {
+    /* mix-blend-mode: multiply; */
+    border: 1px solid black;
+    width: 270px;
+    height: 280px;
+    margin-right: 75px;
+}

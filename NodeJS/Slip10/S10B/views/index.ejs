@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Department Information</h1>
+    <table border="1">
+        <tr>
+            <th>Department name</th>
+            <th>Average Salary</th>
+            <th>Maximum Salary</th>
+            <th>Minimum Salary</th>
+        </tr>
+        <ul>
+            <% arrayobj.forEach(item=> { %>
+                <tr>
+                    <td>
+                        <%= item.dept_name %>
+                    </td>
+                    <td>
+                        <%= parseInt(item.avgSal) %>
+                    </td>
+                    <td>
+                        <%= item.maxSal %>
+                    </td>
+                    <td>
+                        <%= item.minSal %>
+                    </td>
+                </tr>
+                <% }); %>
+        </ul>
+    </table>
+</body>
+
+</html>

@@ -14,7 +14,6 @@ inline int findMin(int a, int b)
 int main()
 {
     int a, b;
-
     cout << "Enter No 1: ";
     cin >> a;
 
