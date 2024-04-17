@@ -1,0 +1,3 @@
+THIS is Text from FILE2.
+THIS is 2nd line from FILE2.
+THIS is 3th line from FILE2.

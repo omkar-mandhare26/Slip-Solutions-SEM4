@@ -13,24 +13,34 @@ class movie
 public:
     void accept()
     {
-        cout << "enter the movie id";
+        cout << "\nEnter the movie id: ";
         cin >> mid;
-        cout << "enter the movie name";
+        cout << "Enter the movie name: ";
         cin >> mname;
-        cout << "enter the director name";
+        cout << "Enter the director name: ";
         cin >> dname;
-        cout << "enter the budget";
+        cout << "Enter the budget: ";
         cin >> bud;
-        cout << "enter the release year";
+        cout << "Enter the release year: ";
         cin >> ryear;
     }
     void display()
     {
-        cout << "the movie id is" << mid;
-        cout << "the movie name is" << mname;
-        cout << "the director name is" << dname;
-        cout << "the movie budget is" << bud;
-        cout << "the movie release year is" << ryear;
+        cout << "The movie id: " << mid << endl;
+        cout << "The movie name: " << mname << endl;
+        cout << "The director name: " << dname << endl;
+        cout << "The movie budget: " << bud << endl;
+        cout << "The movie release year: " << ryear << endl;
+    }
+
+    void insertFile(char *filename)
+    {
+        ofstream outfile(filename);
+        outfile << "The movie id: " << mid << endl;
+        outfile << "The movie name: " << mname << endl;
+        outfile << "The director name: " << dname << endl;
+        outfile << "The movie budget: " << bud << endl;
+        outfile << "The movie release year: " << ryear << endl;
     }
 };
 
@@ -38,21 +48,23 @@ int main()
 {
     movie m[5];
     int n, i;
-    fstream file;
-    file.open("S2b_movie.txt", ios::in | ios::out);
-    cout << "enter the no of record you want -";
+    char filename[] = {"S2b_movie.txt"};
+    cout << "Enter the no of record you want: ";
     cin >> n;
-    for (i = 0; i <= n; i++)
-    {
-        m[i].accept();
-        file.write((char *)&m[i], sizeof(m[i]));
-    }
-    cout << "\ndetails of movie from the file-";
     for (i = 0; i < n; i++)
     {
-        file.read((char *)&m[i], sizeof(m[i]));
-        m[i].display();
+        m[i].accept();
+        m[i].insertFile(filename);
     }
-    file.close();
+    cout << "\nDetails of movie from the file: ";
+
+    ifstream infile;
+    infile.open(filename);
+    char c;
+    while ((c = infile.get()) != EOF)
+    {
+        cout << c;
+    }
+
     return 0;
 }

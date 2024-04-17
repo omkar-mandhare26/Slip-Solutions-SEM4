@@ -38,7 +38,7 @@ public:
 
 int main()
 {
-    Fraction *obj1 = new Fraction(2, 7);
+    Fraction *obj1 = new Fraction(2, 9);
     Fraction *obj2 = new Fraction(5, 7);
 
     cout << "First Fraction: ";
@@ -51,6 +51,5 @@ int main()
     cout << "Addition: ";
     obj3.displayFraction();
 
-    // obj1->addFraction(*obj2);
     return 0;
 }

@@ -1,0 +1,5 @@
+The movie id: 101
+The movie name: omkar
+The director name: idk
+The movie budget: 5050
+The movie release year: 2021
