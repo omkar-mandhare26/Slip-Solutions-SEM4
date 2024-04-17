@@ -17,8 +17,8 @@ const validateEmail = (email) => {
         if (!(e.test(email.substring(email.length - 3)))) return false;
     });
     return true;
-
 }
+
 let r = validateEmail("omkar@gmail.xyz");
 console.log(r);
 // module.exports = { validateName };

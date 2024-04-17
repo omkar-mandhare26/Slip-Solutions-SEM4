@@ -10,7 +10,7 @@ conn.connect((err) => {
     if (err) throw err;
     console.log(`Connected to MySQL Successfully!`);
 
-    let sql = `CREATE DATABASE hospital;`;
+    let sql = `CREATE DATABASE IF NOT EXIST hospital;`;
     conn.query(sql, (err, data) => {
         if (err) throw err;
         console.log(`hospital DB Created Successfully!`);

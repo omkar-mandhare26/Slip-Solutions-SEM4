@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Profile System</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="/insert">Insert</a>
+        <a href="/delete">Delete</a>
+    </div>
+    <h1>Teachers Profile System</h1>
+    <h2>Teachers Currently Working</h2>
+
+    <div class="container">
+        <table border="1">
+            <tr>
+                <th>Teacher ID</th>
+                <th>Name</th>
+                <th>Qualifications</th>
+                <th>Salary</th>
+                <th>Department</th>
+                <th>Experience</th>
+                <th>Action</th>
+            </tr>
+            <% data.forEach(function(teacher) { %>
+                <tr>
+                    <td>
+                        <%= teacher.t_id %>
+                    </td>
+                    <td>
+                        <%= teacher.t_name %>
+                    </td>
+                    <td>
+                        <%= teacher.qualif %>
+                    </td>
+                    <td>
+                        <%= teacher.salary %>
+                    </td>
+                    <td>
+                        <%= teacher.dept %>
+                    </td>
+                    <td>
+                        <%= teacher.exp %>
+                    </td>
+                    <td>
+                        <form method="POST">
+                            <input type="hidden" name="primaykey" value=<%=teacher.t_id %>>
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
+    </div>
+</body>
+
+</html>

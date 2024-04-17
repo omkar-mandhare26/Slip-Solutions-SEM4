@@ -1,2 +1,0 @@
-This is file to count occurrence of any word and 
-then replace all the words with given word
