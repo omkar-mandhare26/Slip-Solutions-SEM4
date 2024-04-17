@@ -8,4 +8,6 @@ http.createServer((req, res) => {
     res.writeHead(200, { "content-type": "text/html" });
     res.write(fs.readFileSync(indexFile));
     res.end();
-}).listen(PORT, () => { console.log(`Server Running at Port ${PORT}`); });
+}).listen(PORT, () => {
+    console.log(`Server Running at Port ${PORT}`);
+});

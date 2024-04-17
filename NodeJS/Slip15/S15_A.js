@@ -8,23 +8,8 @@ const findOccurrence = (str, word) => {
         if (word == strArr[i])
             count++;
     }
-
-    // console.log(strArr);
     console.log(count);
 
     return 0;
 }
-// const findOccurrence = (str, word) => {
-//     let count = 0;
-//     let index = 0;
-
-//     while (index = str.indexOf(word, index) !== -1) {
-//         count++;
-//         index += word.length;
-//     }
-
-//     return count;
-// }
 findOccurrence(string, word);
-// let result = findOccurrence(string, word);
-// console.log(`Occurence of ${word}: ${result}`);

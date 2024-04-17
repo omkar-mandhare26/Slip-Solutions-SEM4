@@ -49,7 +49,10 @@ public:
         Vector temp(newSize);
         int index = 0;
         for (int i = 0; i < size; i++)
-            temp.p[index++] = p[i];
+        {
+            temp.p[index] = p[i];
+            index++;
+        }
 
         for (int j = 0; j < obj.size; j++)
             temp.p[index++] = obj.p[j];
