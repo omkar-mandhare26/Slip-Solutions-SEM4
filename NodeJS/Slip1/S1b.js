@@ -1,11 +1,13 @@
-import mysql from "mysql";
+// import mysql from "mysql";
+const mysql = require("mysql");
 
 let conn = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "mysql",
+    password: "",
     database: "student_db"
 });
+
 
 conn.connect((err) => {
     if (err) throw err;
@@ -13,7 +15,7 @@ conn.connect((err) => {
 });
 
 function createTable() {
-    let query = "CREATE TABLE IF NOT EXISTS students(rno int,sname text,percentage float,PRIMARY KEY(rno));"
+    let query = `CREATE TABLE IF NOT EXISTS students(rno int,sname text,percentage float,PRIMARY KEY(rno));`
     conn.query(query, (err, data) => {
         if (err) throw err;
     });
@@ -29,7 +31,7 @@ function insertData() {
         values.push([rollNo[i], studentName[i], per[i]]);
     }
 
-    let query = `INSERT INTO students (rno, sname, percentage) VALUES ?`;
+    let query = `INSERT INTO students (rno, sname, percentage) VALUES (?,?,?)`;
 
     conn.query(query, [values], (err, data) => {
         if (err) throw err;
@@ -44,7 +46,7 @@ function readTable() {
         if (err) throw err;
         console.log(`student Table Data: `);
         console.log(data);
-    })
+    });
 }
 
 // createTable();
@@ -55,4 +57,4 @@ readTable();
 conn.end((err) => {
     if (err) throw err;
     console.log(`Connection Ended`);
-})
+});

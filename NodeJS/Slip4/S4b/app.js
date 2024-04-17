@@ -1,4 +1,3 @@
-const dbFunc = require("./db");
 const mysql = require("mysql");
 const express = require("express");
 
@@ -32,7 +31,6 @@ app.get('/insert', (req, res) => {
 })
 
 app.post('/insert', (req, res) => {
-    // res.render("insert");
     const { tid, tname, qualification, tsalary, department, experience } = req.body;
     console.log(req.body);
     sql = 'INSERT INTO teachers (t_id, t_name, qualif, salary, dept, exp) VALUES (?, ?, ?, ?, ?, ?)';
