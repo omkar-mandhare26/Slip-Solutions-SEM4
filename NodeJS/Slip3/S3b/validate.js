@@ -19,6 +19,6 @@ const validateEmail = (email) => {
     return true;
 }
 
-let r = validateEmail("omkar@gmail.xyz");
+// let r = validateEmail("omkar@gmail.xyz");
 console.log(r);
-// module.exports = { validateName };
+module.exports = { validateName, validateEmail };

@@ -5,7 +5,7 @@ class Employee
 {
 public:
     int empCode, salary;
-    string name;
+    char *name;
 
 public:
     void getEmpDetails()
@@ -79,6 +79,8 @@ public:
 };
 void maxSalary(fullTime *obj1, partTime *obj2, int n1, int n2)
 {
+    // 1,2,3,4,5
+
     int i, k;
     for (int max1 = obj1[0].salary, i = 1, k = 0; i < n1; i++)
     {
@@ -126,9 +128,15 @@ int main()
                 cout << "\nPress 1 for FullTime employee, 2 for PartTime Employee: ";
                 cin >> type;
                 if (type == 1)
-                    ft[f++].getFTDetails();
+                {
+                    ft[f].getFTDetails();
+                    f++;
+                }
                 else if (type == 2)
-                    pt[p++].getPTDetails();
+                {
+                    pt[p].getPTDetails();
+                    p++;
+                }
             }
             break;
         case 2:

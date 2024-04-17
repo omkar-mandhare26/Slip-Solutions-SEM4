@@ -2,7 +2,7 @@ function concat(fname, lname) {
     return `${fname} ${lname}`;
 }
 
-function Calage(dob) {
+function calculate_age(dob) {
     const birthDate = new Date(dob);
     const currentDate = new Date();
     age = currentDate.getFullYear() - birthDate.getFullYear();
@@ -13,4 +13,4 @@ function Calage(dob) {
     return age;
 }
 
-module.exports = { concat, Calage };
+module.exports = { concat, calculate_age };

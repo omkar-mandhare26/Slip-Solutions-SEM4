@@ -9,7 +9,7 @@ rl.question("Enter First Name: ", (fname) => {
     rl.question("Enter Last Name: ", (lname) => {
         rl.question("Enter You DOB: ", (dob) => {
             console.log(`Full Name: ${functions.concat(fname, lname)}`);
-            console.log(`Age: ${functions.Calage(dob)}`);
+            console.log(`Age: ${functions.calculate_age(dob)}`);
             rl.close();
         });
     });
